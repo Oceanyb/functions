@@ -11,9 +11,11 @@
     "prop-types": "^15.6.2",
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-device-info": "^1.6.1",
+    "react-native-gesture-handler": "^1.2.1",
     "react-native-image-crop-picker": "^0.21.3",
-    "react-native-vector-icons": "^6.1.0",
-    "react-navigation": "^2.18.2"
+    "react-native-update": "^5.1.8",
+    "react-navigation": "^3.9.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
