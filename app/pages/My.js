@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, AsyncStorage, StatusBar, TouchableWithoutFeedback, TextInput } from 'react-native';
 import { Button, List, InputItem, Toast, Icon, Checkbox, Tabs, Portal } from '@ant-design/react-native';
 
+import { XyNavBar } from '../static/libs/MiniXy'
 import apiFetch from '../static/libs/apiFetch'
 import $s from '../static/styles/sui'
 
@@ -10,6 +11,14 @@ type Props = {};
 export default class My extends Component<Props> {
   static navigationOptions = {
     header: null,
+    tabBarLabel: '我的',
+    tabBarIcon: ({focused}) => {
+      if(focused){
+        return (<Icon name='user' color={$s.c.default}/>)
+      }else{
+        return (<Icon name='user' color='#949494'/>)
+      }
+    }
   }
   constructor(props) {
     super(props);
@@ -22,6 +31,7 @@ export default class My extends Component<Props> {
   render() {
     return (
       <View style={{height:"100%",backgroundColor:"#fefefe"}}>
+        <XyNavBar title="我的" style={{ position: 'absolute', width: '100%', zIndex: 999 }} ></XyNavBar>
         <View style={{marginTop:$s.statusBarH + $s.navH,alignItems:"center",justifyContent:'center'}}>
           <View style={{height:188,width:'82%'}}>
               <View>

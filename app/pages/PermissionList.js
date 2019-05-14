@@ -3,7 +3,9 @@ import {Platform, StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react
 import { Flex, Button, List, InputItem, Icon } from '@ant-design/react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 
+import { XyNavBar } from '../static/libs/MiniXy'
 import apiFetch from '../static/libs/apiFetch'
+import $s from '../static/styles/sui'
 
 type Props = {};
 export default class PermissionList extends Component<Props> {
@@ -25,8 +27,9 @@ export default class PermissionList extends Component<Props> {
   render() {
     return (
       <View style={{height:'100%',backgroundColor:'#eee'}}>
+        <XyNavBar title="功能" style={{ position: 'absolute', width: '100%', zIndex: 999 }} ></XyNavBar>
         <ScrollView
-          style={{ flex: 1, backgroundColor: '#f5f5f9',marginTop:50 }}
+          style={{ flex: 1, backgroundColor: '#f5f5f9',marginTop:$s.statusBarH + $s.navH }}
           automaticallyAdjustContentInsets={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}

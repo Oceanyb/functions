@@ -3,7 +3,9 @@ import {Platform, StyleSheet, Text, View, AsyncStorage, Linking } from 'react-na
 import { Flex, Button, List, InputItem, Icon, Toast } from '@ant-design/react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 
+import { XyNavBar } from '../static/libs/MiniXy'
 import apiFetch from '../static/libs/apiFetch'
+import $s from '../static/styles/sui'
 
 type Props = {};
 export default class Usepermission extends Component<Props> {
@@ -33,7 +35,8 @@ export default class Usepermission extends Component<Props> {
   render() {
     return (
       <View style={{height:'100%',backgroundColor:'#eee'}}>
-        <View style={{marginTop:50}}>
+        <XyNavBar title="功能" style={{ position: 'absolute', width: '100%', zIndex: 999 }} ></XyNavBar>
+        <View style={{marginTop:$s.statusBarH + $s.navH}}>
           <List>
             <Item
               style={{borderRadius:5,justifyContent:'space-around'}}

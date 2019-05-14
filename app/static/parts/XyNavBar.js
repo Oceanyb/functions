@@ -26,7 +26,7 @@ export default class XyNavBar extends React.Component {
   render() {
     let data = this.state
     return (
-      <View style={[_.nav, { backgroundColor: data.bgc2 || data.bgc || '#1e78f0', paddingTop: $s.statusBarH, }, data.style, $css.navH]} >
+      <View style={[_.nav, { backgroundColor: data.bgc2 || data.bgc || '#606060', paddingTop: $s.statusBarH, }, data.style, $css.navH]} >
         {this.renderContent(data)}
       </View>
     )

@@ -1,27 +1,40 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
-import { Flex, Button, List, InputItem, Icon } from '@ant-design/react-native'
+import { Flex, Button, List, InputItem, Icon, Modal } from '@ant-design/react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 
+import { XyNavBar } from '../static/libs/MiniXy'
 import apiFetch from '../static/libs/apiFetch'
+import $s from '../static/styles/sui'
 
 type Props = {};
 export default class Functions extends Component<Props> {
   static navigationOptions = {
     header: null,
+    tabBarLabel: '功能',
+    tabBarIcon: ({focused}) => {
+      if(focused){
+        return (<Icon name='appstore' color={$s.c.default}/>)
+      }else{
+        return (<Icon name='appstore' color='#949494'/>)
+      }
+    }
   }
   constructor(props){
     super(props)
     this.state={
       ...props,
       userInfo:{},
-      list:[]
+      list:[],
+      visible:false,
+      visible1:false
     }
   }
   render() {
     return (
       <View style={{height:'100%',backgroundColor:'#eee'}}>
-        <Button onPressOut={()=>{this.props.navigation.navigate('PermissionList',{listType:3})}} style={{marginTop:50}}>未通过名单</Button>
+        <XyNavBar title="功能" style={{ position: 'absolute', width: '100%', zIndex: 999 }} ></XyNavBar>
+        <Button onPressOut={()=>{this.props.navigation.navigate('PermissionList',{listType:3})}} style={{marginTop:$s.statusBarH + $s.navH}}>未通过名单</Button>
         <Button onPressOut={()=>{this.props.navigation.navigate('PermissionList',{listType:2})}}>已通过名单</Button>
         <Button onPressOut={()=>{this.props.navigation.replace('TabNav')}}>刷新</Button>
         <ScrollView
@@ -59,10 +72,10 @@ export default class Functions extends Component<Props> {
         list
       })
     }
-    setTimeout(() => {
-      this.props.navigation.replace('TabNav')
-      // this.componentDidMount()
-    }, 15000);
+    // setTimeout(() => {
+    //   this.props.navigation.replace('TabNav')
+    //   // this.componentDidMount()
+    // }, 15000);
   }
 }
 

@@ -17,6 +17,7 @@ export default class Blank extends Component<Props> {
     console.log(props)
     this.state = {
       ...props,
+      visible:false
     }
   }
   componentWillMount(){
@@ -27,16 +28,28 @@ export default class Blank extends Component<Props> {
     }
   }
   render() {
+    // const footerButtons = [
+    //   { text: '', onPress: () => console.log('ok') },
+    // ];
     return (
-      <View style={{ height:"100%"}}>
+      <View style={{height:"100%",backgroundColor:'#fff'}}>
         <StatusBar hidden={true}/>
+        {/* <Modal
+          transparent
+          onClose={()=>{this.setState({visible:false})}}
+          visible={this.state.visible}
+          style={{borderRadius:15,width:328}}
+        >
+          <View style={{alignItems:'center'}}>
+            <Text style={{fontSize:22,alignItems:'center',fontWeight:'700'}}>贵重物品保价声明</Text>
+          </View>
+        </Modal> */}
       </View>
     )
   }
-  componentDidMount = async () => {
-    const _this = this
+  componentDidMount = () => {
     this.checkUpdate()
-    this.props.navigation.replace('TabNav')
+    // this.props.navigation.replace('TabNav')
   }
   doUpdate = (info) => {
     downloadUpdate(info).then((hash) => {
@@ -46,6 +59,7 @@ export default class Blank extends Component<Props> {
     });
   }
   checkUpdate = () => {
+    const _this = this
     checkUpdate(appKey).then((info) => {
       console.log(info)
       if (info.expired) {
@@ -58,6 +72,7 @@ export default class Blank extends Component<Props> {
         ]);
       } else if (info.upToDate) {
         console.log('提示:您的应用版本已是最新.');
+        // _this.setState({visible:true})
         this.props.navigation.replace('TabNav')
       } else {
         console.log('coding',info.description)
